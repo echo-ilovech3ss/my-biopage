@@ -157,4 +157,44 @@ document.addEventListener('DOMContentLoaded', () => {
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   })[character]);
 
-  });
+  const repoDescriptions = {
+    'my-biopage': 'My personal site. Pulls my Discord status, Last.fm activity, and Minecraft skin.',
+    'lite-wa': 'Lightweight WhatsApp automation tool with a web QR dashboard.',
+    'Fetchr': 'Desktop app to download and convert videos using GPU acceleration (Rust + Tauri).',
+    'predictor': 'Paper trading bot testing market prediction ideas with ML.',
+    'conjunction': 'My Arch Linux setup scripts and dotfiles.'
+  };
+
+  const fetchRepos = async () => {
+    const grid = document.getElementById('githubRepoGrid');
+    if (!grid) return;
+    try {
+      const response = await fetch('https://api.github.com/users/echo-ilovech3ss/repos?sort=updated&per_page=4');
+      const repos = await response.json();
+      if (Array.isArray(repos) && repos.length > 0) {
+        grid.innerHTML = repos.map(repo => {
+          const lang = repo.language || 'Code';
+          let dotClass = 'js-dot';
+          if (lang === 'Rust') dotClass = 'rust-dot';
+          else if (lang === 'Python') dotClass = 'py-dot';
+          const description = repoDescriptions[repo.name] || repo.description || 'Open source project on GitHub.';
+          return `
+            <a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noreferrer" class="repo-card">
+              <div class="repo-card-top">
+                <strong class="repo-name">${escapeHtml(repo.name)}</strong>
+                <span class="repo-visibility">Public</span>
+              </div>
+              <p class="repo-desc">${escapeHtml(description)}</p>
+              <div class="repo-meta-row">
+                <span class="repo-lang"><span class="lang-dot ${dotClass}"></span>${escapeHtml(lang)}</span>
+                <span class="repo-stars">★ ${repo.stargazers_count}</span>
+                <span class="repo-forks">⑂ ${repo.forks_count}</span>
+              </div>
+            </a>
+          `;
+        }).join('');
+      }
+    } catch {}
+  };
+  fetchRepos();
+});
