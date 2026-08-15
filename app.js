@@ -128,4 +128,33 @@ document.addEventListener('DOMContentLoaded', () => {
   updateClock();
   setInterval(updateClock, 1000);
 
+  const skinCanvas = document.getElementById('skinCanvas');
+  let skinViewer;
+  if (skinCanvas && window.skinview3d) {
+    const box = skinCanvas.parentElement.getBoundingClientRect();
+    skinViewer = new skinview3d.SkinViewer({
+      canvas: skinCanvas,
+      width: Math.floor(box.width),
+      height: Math.floor(box.height),
+      skin: 'https://mineskin.eu/skin/Echo_Blade'
+    });
+    skinViewer.autoRotate = true;
+    skinViewer.animation = new skinview3d.WalkingAnimation();
+  }
+  document.getElementById('btn3dRotate')?.addEventListener('click', event => {
+    if (skinViewer) skinViewer.autoRotate = !skinViewer.autoRotate;
+    event.currentTarget.classList.toggle('active');
+  });
+  document.getElementById('btn3dAnim')?.addEventListener('click', event => {
+    if (skinViewer) skinViewer.animation = skinViewer.animation ? null : new skinview3d.WalkingAnimation();
+    event.currentTarget.classList.toggle('active');
+  });
+  document.getElementById('btn3dReset')?.addEventListener('click', () => {
+    if (skinViewer) skinViewer.camera.position.set(0, 5, 42);
+  });
+
+  const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[character]);
+
   });
