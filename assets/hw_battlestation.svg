@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" fill="none">
+  <rect width="160" height="120" rx="10" fill="#0A0B14"/>
+  <rect x="18" y="16" width="80" height="52" rx="3" fill="#080912" stroke="#2D3042" stroke-width="2"/>
+  <rect x="22" y="20" width="72" height="44" rx="2" fill="#04060E"/>
+  <path d="M28 28l6 4-6 4" stroke="#4ADE80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="38" y1="32" x2="60" y2="32" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="28" y1="42" x2="74" y2="42" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="28" y1="48" x2="68" y2="48" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="28" y1="54" x2="52" y2="54" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M52 68h12v18H52z" fill="#1E202E"/>
+  <path d="M42 86h32v4H42z" rx="2" fill="#2E3246"/>
+  <rect x="104" y="12" width="42" height="84" rx="4" fill="#0C0D18" stroke="#383C52" stroke-width="2"/>
+  <rect x="108" y="18" width="34" height="66" rx="2" fill="rgba(124, 109, 250, 0.08)" stroke="#222538" stroke-width="1"/>
+  <circle cx="125" cy="36" r="7" fill="none" stroke="url(#pumpGlow)" stroke-width="2.5"/>
+  <circle cx="125" cy="36" r="3" fill="#4ADE80"/>
+  <line x1="136" y1="28" x2="136" y2="44" stroke="#C084FC" stroke-width="2" stroke-linecap="round"/>
+  <line x1="139" y1="28" x2="139" y2="44" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+  <rect x="111" y="52" width="28" height="12" rx="2" fill="#141724" stroke="#4ADE80" stroke-width="1.5"/>
+  <circle cx="118" cy="58" r="3.5" fill="none" stroke="#4ADE80" stroke-width="1"/>
+  <circle cx="128" cy="58" r="3.5" fill="none" stroke="#4ADE80" stroke-width="1"/>
+  <rect x="108" y="72" width="34" height="18" fill="#141624"/>
+  <text x="112" y="84" font-family="monospace" font-size="6" fill="#4ADE80" font-weight="bold">RTX 50</text>
+  <rect x="18" y="94" width="70" height="8" rx="2" fill="#141624" stroke="#2E3246" stroke-width="1"/>
+  <ellipse cx="98" cy="98" rx="5" ry="4" fill="#141624" stroke="#4ADE80" stroke-width="1"/>
+  <defs>
+    <linearGradient id="pumpGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+</svg>

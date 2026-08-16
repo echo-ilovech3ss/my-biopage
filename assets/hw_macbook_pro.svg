@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" fill="none">
+  <rect width="160" height="120" rx="10" fill="#0A0B14"/>
+  <rect x="30" y="14" width="100" height="66" rx="5" fill="#181A24" stroke="#4A4E63" stroke-width="2"/>
+  <rect x="34" y="18" width="92" height="58" rx="3" fill="#080812"/>
+  <rect x="74" y="18" width="12" height="4" rx="1" fill="#181A24"/>
+  <circle cx="80" cy="20" r="1" fill="#38BDF8" opacity="0.8"/>
+  <circle cx="80" cy="48" r="20" fill="rgba(192, 132, 252, 0.25)"/>
+  <path d="M44 64 Q80 34, 116 64" stroke="url(#m1Grad)" stroke-width="3" fill="none"/>
+  <polygon points="22,80 138,80 146,104 14,104" fill="#202330" stroke="#4A4E63" stroke-width="2"/>
+  <polygon points="34,82 126,82 130,96 30,96" fill="#0D0E16" stroke="#2D3042" stroke-width="1.5"/>
+  <rect x="65" y="97" width="30" height="6" rx="1.5" fill="#161822" stroke="#3A3E50" stroke-width="1"/>
+  <rect x="72" y="103" width="16" height="2" rx="1" fill="#4A4E63"/>
+  <defs>
+    <linearGradient id="m1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#7c6dfa"/>
+    </linearGradient>
+  </defs>
+</svg>
