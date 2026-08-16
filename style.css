@@ -288,7 +288,7 @@ body {
 }
 
 .lastfm-eq span {
-  width: 2px;
+  width: 2.5px;
   height: 2px;
   background: var(--accent);
   border-radius: 1px;
