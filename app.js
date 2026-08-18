@@ -364,11 +364,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const rawStatus = user.discord_status || 'offline';
-    const status = user.listening_to_spotify ? 'spotify' : rawStatus;
+    const status = rawStatus;
 
     if (discordStatusDot) {
       discordStatusDot.className = `status-indicator ${status}`;
-      const statusTitle = user.listening_to_spotify ? 'Listening to Spotify 🎵' : rawStatus.toUpperCase();
+      const statusTitle = user.listening_to_spotify ? `${rawStatus.toUpperCase()} • Listening to Spotify 🎵` : rawStatus.toUpperCase();
       discordStatusDot.title = `Discord Status: ${statusTitle}`;
     }
 

@@ -333,7 +333,8 @@ body {
 
 .status-indicator.dnd {
   background: #F04747;
-  box-shadow: 0 0 12px #F04747;
+  box-shadow: 0 0 12px #F04747, 0 0 4px #F04747;
+  animation: statusPulseRed 2.2s infinite;
 }
 
 .status-indicator.spotify {
@@ -350,6 +351,12 @@ body {
   0% { box-shadow: 0 0 0 0 rgba(67, 181, 129, 0.7), 0 0 8px rgba(67, 181, 129, 0.5); }
   70% { box-shadow: 0 0 0 7px rgba(67, 181, 129, 0), 0 0 12px rgba(67, 181, 129, 0.3); }
   100% { box-shadow: 0 0 0 0 rgba(67, 181, 129, 0), 0 0 8px rgba(67, 181, 129, 0.5); }
+}
+
+@keyframes statusPulseRed {
+  0% { box-shadow: 0 0 0 0 rgba(240, 71, 71, 0.7), 0 0 8px rgba(240, 71, 71, 0.5); }
+  70% { box-shadow: 0 0 0 7px rgba(240, 71, 71, 0), 0 0 12px rgba(240, 71, 71, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(240, 71, 71, 0), 0 0 8px rgba(240, 71, 71, 0.5); }
 }
 
 @keyframes statusPulseSpotify {
