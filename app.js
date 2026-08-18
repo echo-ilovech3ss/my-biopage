@@ -1544,45 +1544,55 @@ Type <span class="term-cmd">cat specs.txt</span> for full detailed logs.`;
   let skinViewer = null;
 
   function initMinecraft3D() {
-    if (!skinCanvas || !window.skinview3d) return;
-    try {
-      const rect = skinCanvas.parentElement ? skinCanvas.parentElement.getBoundingClientRect() : { width: 340, height: 280 };
-      const w = Math.floor(rect.width || 340);
-      const h = Math.floor(rect.height || 280);
-
-      skinViewer = new skinview3d.SkinViewer({
-        canvas: skinCanvas,
-        width: w,
-        height: h,
-        skin: 'https://mineskin.eu/skin/Echo_Blade'
-      });
-
-      skinViewer.camera.position.set(0, 5, 42);
-      skinViewer.autoRotate = isAutoRotate;
-      skinViewer.autoRotateSpeed = 1.2;
-
-      // Handle skin load error fallback
-      skinViewer.loadSkin('https://mineskin.eu/skin/Echo_Blade').catch(() => {
-        skinViewer.loadSkin('https://minotar.net/skin/Echo_Blade');
-      });
-
-      // Initialize Walking Animation properly
-      if (window.skinview3d.WalkingAnimation) {
-        skinViewer.animation = new skinview3d.WalkingAnimation();
-        skinViewer.animation.speed = 0.9;
+    if (!skinCanvas) return;
+    
+    function load3D() {
+      if (!window.skinview3d) {
+        setTimeout(load3D, 100);
+        return;
       }
-      if (btn3dAnim) btn3dAnim.classList.add('active');
+      try {
+        const stage = document.getElementById('char3dStage') || skinCanvas.parentElement;
+        const rect = stage ? stage.getBoundingClientRect() : { width: 340, height: 300 };
+        const w = Math.max(280, Math.floor(rect.width || 340));
+        const h = Math.max(260, Math.floor(rect.height || 300));
 
-      // Make responsive on resize
-      window.addEventListener('resize', () => {
-        if (skinCanvas.parentElement && skinViewer) {
-          const r = skinCanvas.parentElement.getBoundingClientRect();
-          skinViewer.setSize(Math.floor(r.width), Math.floor(r.height));
+        skinViewer = new skinview3d.SkinViewer({
+          canvas: skinCanvas,
+          width: w,
+          height: h
+        });
+
+        skinViewer.camera.position.set(0, 5, 42);
+        skinViewer.autoRotate = isAutoRotate;
+        skinViewer.autoRotateSpeed = 1.2;
+
+        skinViewer.loadSkin('https://minotar.net/skin/Echo_Blade').catch(() => {
+          skinViewer.loadSkin('https://mineskin.eu/skin/Echo_Blade').catch(() => {
+            skinViewer.loadSkin('https://mc-heads.net/skin/Echo_Blade');
+          });
+        });
+
+        if (window.skinview3d.WalkingAnimation) {
+          skinViewer.animation = new skinview3d.WalkingAnimation();
+          skinViewer.animation.speed = 0.9;
         }
-      });
-    } catch (err) {
-      console.warn('Minecraft 3D WebGL init notice:', err);
+        if (btn3dAnim) btn3dAnim.classList.add('active');
+
+        window.addEventListener('resize', () => {
+          if (stage && skinViewer) {
+            const r = stage.getBoundingClientRect();
+            if (r.width && r.height) {
+              skinViewer.setSize(Math.floor(r.width), Math.floor(r.height));
+            }
+          }
+        });
+      } catch (err) {
+        console.warn('Minecraft 3D WebGL init notice:', err);
+      }
     }
+
+    load3D();
   }
 
   // 3D Control Pill Buttons
